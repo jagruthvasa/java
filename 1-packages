@@ -1,0 +1,68 @@
+/*Design a package to contain the class Student that contains data members such as
+name, roll number and another package contains the interface Sports which contains
+some sports information. Import these two packages in a package called Report which
+process both Student and Sport and give the report.*/
+
+
+package report;
+
+import student.*;
+import sports.*;
+
+public class reportfile extends studentfile implements sportsfile{
+
+      public reportfile(int roll,String name){
+
+            super(roll,name);
+      }     
+
+      public void temp(){
+
+            System.out.println("from the sports file " + s);
+      }
+
+      public void display(){
+
+            super.Display();
+      }
+
+      public static void main(String[] args) {
+
+            reportfile obj= new reportfile(12,"hello");
+            obj.display();
+            obj.temp();
+            
+      }
+
+}
+
+
+sports file
+
+package sports;
+
+public interface sportsfile {
+      float s=1.0F;
+      
+      void temp();
+}
+
+
+
+package student;
+
+public class studentfile {
+      int no;
+      String name;
+      
+      public studentfile(int no,String name){
+            this.no=no;
+            this.name=name;
+      }
+
+      public void Display(){
+            System.out.println("name is " + name +" no is "+ no);
+      }
+}
+
+
