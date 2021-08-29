@@ -1,92 +1,34 @@
-import java.util.*;
-
-class employe{
-      int emid;
-      String emname;
-      double emsal;
-
-      void set(int id,String name,double sal){
-            emid=id;
-            emname=name;
-            emsal=sal;
+class sstudent{
+      int roll;
+      String name;
+      int phone;
+      public sstudent(int roll,String name,int phone){
+          this.roll=roll;
+          this.name=name;
+          this.phone=phone;
       }
 
-      void get(employe em){
-            
-           System.out.println("\nid is " + em.emid + " name is " + em.emname +" salary is " + em.emsal);
+      void get(sstudent s){
+            System.out.println("Roll Number:"+s.roll+"\nName:"+s.name+"\nMobile Number:"+s.phone);
       }
+  }
+  class week7b{
+      public static void main(String ar[]){
+          sstudent s[]=new sstudent[3];
+          s[0]=new sstudent(1,"a",978675);
+          s[1]=new sstudent(2,"s",9101001);
+          s[2]=new sstudent(3,"e",9752672);
 
-}
+          ArrayList <sstudent> list = new ArrayList<>();
+          Iterator i =list.iterator();
+          list.add(s[0]);
+          list.add(s[1]);
+          list.add(s[2]);
 
-public class week8c {
-            public static void main(String[] args) {
-
-                  Map <Integer, employe> map = new HashMap<Integer,employe>();
-
-                  Scanner input= new Scanner(System.in);
-                  int id,temp;
-                  String name;
-                  double sal;
-                  
-                  do{
-                        System.out.println("\n1.add \t 2.Display \t 3.search \t 4.exit");
-                        temp=input.nextInt();
-                        switch(temp){
-                              case 1:
-
-                                    System.out.println("Enter id , name , sal");
-                                    id=input.nextInt();
-                                    name=input.next();
-                                    sal=input.nextDouble();
-
-                                    employe em = new employe();
-
-                                    em.set(id, name, sal);
-
-                                    map.put(id,em);
-
-                                    System.out.println("\nAdded");
-                                    break;
-
-                              case 2:
-
-                                    for(Map.Entry m : map.entrySet()){
-
-                                          employe emm = (employe)m.getValue();
-
-                                          emm.get(emm);
-                                    }
-                                    break;
-
-                              case 3:
-
-                                    System.out.print("enter the id to search :");
-
-                                    int search=input.nextInt();
-                                    
-                                    int flag=0;
-
-                                    for(Map.Entry m : map.entrySet())
-
-                                          if(search == (int)m.getKey()) {
-
-                                                employe emobj = (employe)m.getValue();
-
-                                                emobj.get(emobj);
-
-                                                flag=1;
-                                                break;
-                                          }
-
-                                    if(flag == 0)
-                                          System.out.println("\nNot Found\n");
-
-                                    break;
-
-                              case 4:
-                                    System.exit(0);
-                        }
-
-                  }while(true);
-            }
-}
+          while(i.hasNext()){
+                sstudent ss = (sstudent)i.next();
+                  ss.get(ss);
+          }
+          
+      }
+  }
