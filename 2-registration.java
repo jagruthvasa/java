@@ -1,65 +1,64 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-public class l{
+public class k{
     public static void main(String ar[]){
-        add obj=new add();
+        new abc();
     }
 }
-class add extends JFrame implements ActionListener{
-    JFrame f;
-    JTextField t1,t2;
-    JButton b1,b2,b3,b4;
-    JLabel l1,l2,l3;
-    public add() {
-        f = new JFrame();
-        t1=new JTextField(20);
-        t2=new JTextField(20);
-        b1=new JButton("+");
-        b2=new JButton("-");
-        b3=new JButton("*");
-        b4=new JButton("/");
-
-
-        l1=new JLabel("1st Number");
-        l2=new JLabel("2nd Number");
-        l3=new JLabel("Result");
-        
-        add(l1);
-        add(t1);
-        add(l2);
-        add(t2);
-        add(l3);
-        add(b1);
-        add(b2);
-        add(b3);
-        add(b4);
-        b1.addActionListener(this);
-        b2.addActionListener(this);
-        b3.addActionListener(this);
-        b4.addActionListener(this);
-
-        setLayout(new FlowLayout());
+class abc extends JFrame implements ActionListener,ItemListener{
+    JTextField t;
+    JComboBox c;
+    JRadioButton r1,r2;
+    JButton b;
+    JLabel l;
+    JTextArea ta;
+    ButtonGroup bg;
+    String year="";
+    String gender="";
+    abc(){
+        t=new JTextField(20);
+        l=new JLabel("Name");
+        b=new JButton("Submit");
+        bg=new ButtonGroup();
+        r1=new JRadioButton("Male");
+        r2=new JRadioButton("Female");
+        ta=new JTextArea(10,30);
+        bg.add(r1);
+        bg.add(r2);
+        c=new JComboBox();
+        for(int i=1996;i<=2010;i++){
+            c.addItem(Integer.toString(i));
+        }
+        b.addActionListener(this);
+        c.addItemListener(this);
+        r1.addItemListener(this);
+        r2.addItemListener(this);
+        add(l);
+        add(t);
+        add(r1);
+        add(r2);
+        add(c);
+        add(b);
+        add(ta);
         setVisible(true);
-        setSize(400,400);
+        setSize(400, 400);
+        setLayout(new FlowLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public void actionPerformed(ActionEvent ae){
-        int num1=Integer.parseInt(t1.getText());
-        int num2=Integer.parseInt(t2.getText());
-        int value=0;
-        if(ae.getSource()==b1){
-            value=num1+num2;
+        if(ae.getSource()==b){
+            String name=t.getText();
+            ta.setText("Name:"+name+"\nGender:"+gender+"\nYear:"+year);
         }
-        if(ae.getSource()==b2){
-            value=num1-num2;
+    }
+    public void itemStateChanged(ItemEvent ie){
+        year = String.valueOf(c.getSelectedItem());
+        if(ie.getSource()==r1){
+            gender = r1.getText();
         }
-        if(ae.getSource()==b3){
-            value=num1*num2;
+        if(ie.getSource()==r2){
+            gender = r2.getText();
         }
-        if(ae.getSource()==b4){
-            value=num1/num2;
-        }
-        l3.setText(value+"");
     }
 }
