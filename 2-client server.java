@@ -7,7 +7,7 @@ import java.io.*;
 public class week15client {
       public static void main(String[] args) throws Exception {
 
-            Socket s = new Socket("192.168.178.66",1500);
+            Socket s = new Socket("localhost",1500);
             OutputStream os = s.getOutputStream();
             DataOutputStream dos = new DataOutputStream(os);
             int a=10,b=10;
